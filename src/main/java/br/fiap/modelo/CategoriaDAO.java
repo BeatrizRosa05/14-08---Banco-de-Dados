@@ -16,12 +16,12 @@ public class CategoriaDAO {
 
     /// MÉTODOS
     public void inserir (Categoria categoria){
-        sql = "insert INTO java_categoria VALUES (?, ?)";
+        sql = "insert INTO java_categoria VALUES (seqc.nextval, ?)";
 
         try(Connection connection = Conexao.conectar()){
             ps = connection.prepareStatement(sql);
-            ps.setLong(1,categoria.getId());
-            ps.setString(2, categoria.getCategoria());
+            //ps.setLong(1,categoria.getId());
+            ps.setString(1, categoria.getCategoria());
             ps.execute();
         }
         catch(SQLException e){
@@ -45,6 +45,5 @@ public class CategoriaDAO {
         }
         return lista;
     }
-
 
 }//////////////////////////////
